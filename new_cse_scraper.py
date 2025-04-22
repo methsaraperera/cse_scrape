@@ -8,12 +8,14 @@ import pytz
 import json
 import pandas as pd
 
-utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+#utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+utc_now = datetime.datetime.now(datetime.UTC)
 today = utc_now.astimezone(pytz.timezone("Asia/Colombo"))
 
 
 today_stem = today.strftime('%Y%m%d')
-scrape_time = datetime.datetime.utcnow()
+#scrape_time = datetime.datetime.utcnow()
+scrape_time = datetime.datetime.now(datetime.UTC)
 today = today.strftime('%Y-%m-%d')
 
 
