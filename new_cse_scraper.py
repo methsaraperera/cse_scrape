@@ -90,7 +90,9 @@ if len(listo) > 1:
     old['Scrape_time']  = pd.to_datetime(old['Scrape_time'] )
 
     tog = pd.concat([old, df])
-    tog['Scrape_time'] = pd.to_datetime(tog['Scrape_time'])
+    #tog['Scrape_time'] = pd.to_datetime(tog['Scrape_time'])
+    #Fix ValueError in datetime parsing by setting utc=True in pd.to_datetime to handle tz-aware datetime objects in 'Scrape_time' column - Apr 23, 2025
+    tog['Scrape_time'] = pd.to_datetime(tog['Scrape_time'], utc=True)
     tog.sort_values(by=['Scrape_time'], ascending=False, inplace=True)
 
     tog.drop_duplicates(subset=['name', 'Date'], keep='first', inplace=True)
